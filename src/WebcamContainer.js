@@ -24,7 +24,7 @@ export default function WebcamContainer() {
   }
 
   return (
-    <div class={tw``}>
+    <>
       <div className={tw`flex justify-center m-3`}>
         <Button onClick={toggleDisableWebcam}>
           {webcamDisabled ? "Enable Webcam" : "Disable Webcam"}
@@ -44,19 +44,22 @@ export default function WebcamContainer() {
           />
         )}
       </div>
-    </div>
+    </>
   );
 }
 
 function WebcamPlaceholder() {
   return (
     <div
+      className={tw`h-screen flex items-center justify-center text-white text-xs`}
       style={{
         width: `${webcamDimensions.width}px`,
         height: `${webcamDimensions.width}px`,
         backgroundColor: "black",
       }}
-    />
+    >
+      your webcam is disabled
+    </div>
   );
 }
 

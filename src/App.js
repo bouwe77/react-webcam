@@ -7,7 +7,7 @@ function App() {
     <>
       <div className={tw`h-screen flex justify-center`}>
         <div className={tw`flex flex-col`}>
-          <h1 className={tw`text-6xl font-light text-center text-blue-900 m-3`}>
+          <h1 className={tw`text-5xl font-light text-center text-blue-900 m-3`}>
             My Webcam
           </h1>
 
