@@ -27,8 +27,11 @@ function App() {
       <h1>My Webcam :)</h1>
 
       <div>
-        <button onClick={toggleDisableWebcam}>ENABLE/DISABLE</button>
-        <br /> <button onClick={toggleSepia}>COLOR/SEPIA</button>
+        <button onClick={toggleDisableWebcam}>
+          {webcamDisabled ? "Enable Webcam" : "Disable Webcam"}
+        </button>
+        <br />{" "}
+        <button onClick={toggleSepia}>{sepia ? "Color" : "Sepia"}</button>
       </div>
 
       {webcamDisabled ? (
