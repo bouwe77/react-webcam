@@ -11,10 +11,15 @@ const videoConstraints = {
 };
 
 function App() {
-  const [webcamDisabled, setWebcamDisabled] = useState(true);
+  const [webcamDisabled, setWebcamDisabled] = useState(false);
+  const [sepia, setSepia] = useState(true);
 
   function toggleDisableWebcam() {
     setWebcamDisabled(!webcamDisabled);
+  }
+
+  function toggleSepia() {
+    setSepia(!sepia);
   }
 
   return (
@@ -23,6 +28,7 @@ function App() {
 
       <div>
         <button onClick={toggleDisableWebcam}>ENABLE/DISABLE</button>
+        <br /> <button onClick={toggleSepia}>COLOR/SEPIA</button>
       </div>
 
       {webcamDisabled ? (
@@ -34,7 +40,10 @@ function App() {
           }}
         />
       ) : (
-        <Webcam videoConstraints={videoConstraints} />
+        <Webcam
+          className={sepia ? "sepia" : null}
+          videoConstraints={videoConstraints}
+        />
       )}
     </>
   );
