@@ -26,15 +26,6 @@ export default function WebcamContainer() {
   return (
     <>
       <div className={tw`flex justify-center m-3`}>
-        <Button onClick={toggleDisableWebcam}>
-          {webcamDisabled ? "Enable Webcam" : "Disable Webcam"}
-        </Button>
-
-        <Button disabled={webcamDisabled} onClick={toggleSepia}>
-          {sepia ? "Color" : "Sepia"}
-        </Button>
-      </div>
-      <div className={tw`flex justify-center m-3`}>
         {webcamDisabled ? (
           <WebcamPlaceholder />
         ) : (
@@ -43,6 +34,15 @@ export default function WebcamContainer() {
             videoConstraints={videoConstraints}
           />
         )}
+      </div>
+      <div className={tw`flex justify-center m-3`}>
+        <Button onClick={toggleDisableWebcam}>
+          {webcamDisabled ? "Enable Webcam" : "Disable Webcam"}
+        </Button>
+
+        <Button disabled={webcamDisabled} onClick={toggleSepia}>
+          {sepia ? "Color" : "Sepia"}
+        </Button>
       </div>
     </>
   );
@@ -63,7 +63,7 @@ function WebcamPlaceholder() {
   );
 }
 
-function Button({ children, disabled, ...rest }) {
+function Button({ children, ...rest }) {
   return (
     <button
       className={tw`m-1 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded w-40`}
