@@ -7,10 +7,6 @@ const webcamDimensions = {
   height: 300,
 };
 
-const videoConstraints = {
-  ...webcamDimensions,
-};
-
 export default function WebcamContainer() {
   const [webcamDisabled, setWebcamDisabled] = useState(true);
   const [sepia, setSepia] = useState(false);
@@ -30,8 +26,8 @@ export default function WebcamContainer() {
           <WebcamPlaceholder />
         ) : (
           <Webcam
-            className={sepia ? "sepia" : null}
-            videoConstraints={videoConstraints}
+            className={sepia ? tw`filter sepia` : null}
+            videoConstraints={webcamDimensions}
           />
         )}
       </div>
