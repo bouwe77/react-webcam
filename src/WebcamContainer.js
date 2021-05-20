@@ -23,12 +23,22 @@ export default function WebcamContainer() {
     <>
       <div className={tw`flex justify-center m-3`}>
         {webcamDisabled ? (
-          <WebcamPlaceholder />
-        ) : (
-          <Webcam
-            className={sepia ? tw`filter sepia` : null}
-            videoConstraints={webcamDimensions}
+          <WebcamPlaceholder
+            width={webcamDimensions.width}
+            height={webcamDimensions.height}
           />
+        ) : (
+          <div
+            style={{
+              width: `${webcamDimensions.width}px`,
+              height: `${webcamDimensions.height}px`,
+            }}
+          >
+            <Webcam
+              className={sepia ? tw`filter sepia` : null}
+              videoConstraints={webcamDimensions}
+            />
+          </div>
         )}
       </div>
       <div className={tw`flex justify-center m-3`}>
@@ -44,13 +54,13 @@ export default function WebcamContainer() {
   );
 }
 
-function WebcamPlaceholder() {
+function WebcamPlaceholder({ width, height }) {
   return (
     <div
       className={tw`h-screen flex items-center justify-center text-white text-xs`}
       style={{
-        width: `${webcamDimensions.width}px`,
-        height: `${webcamDimensions.width}px`,
+        width: `${width}px`,
+        height: `${height}px`,
         backgroundColor: "black",
       }}
     >
