@@ -1,53 +1,19 @@
-import React, { useState } from "react";
-import Webcam from "react-webcam";
-
-const webcamDimensions = {
-  width: 300,
-  height: 300,
-};
-
-const videoConstraints = {
-  ...webcamDimensions,
-};
+import React from "react";
+import Webcam from "./WebcamContainer";
+import { tw } from "twind";
 
 function App() {
-  const [webcamDisabled, setWebcamDisabled] = useState(false);
-  const [sepia, setSepia] = useState(true);
-
-  function toggleDisableWebcam() {
-    setWebcamDisabled(!webcamDisabled);
-  }
-
-  function toggleSepia() {
-    setSepia(!sepia);
-  }
-
   return (
     <>
-      <h1>My Webcam :)</h1>
+      <div className={tw`h-screen flex justify-center`}>
+        <div className={tw`flex flex-col`}>
+          <h1 className={tw`text-6xl font-light text-center text-blue-900 m-3`}>
+            My Webcam
+          </h1>
 
-      <div>
-        <button onClick={toggleDisableWebcam}>
-          {webcamDisabled ? "Enable Webcam" : "Disable Webcam"}
-        </button>
-        <br />{" "}
-        <button onClick={toggleSepia}>{sepia ? "Color" : "Sepia"}</button>
+          <Webcam />
+        </div>
       </div>
-
-      {webcamDisabled ? (
-        <div
-          style={{
-            width: `${webcamDimensions.width}px`,
-            height: `${webcamDimensions.width}px`,
-            backgroundColor: "black",
-          }}
-        />
-      ) : (
-        <Webcam
-          className={sepia ? "sepia" : null}
-          videoConstraints={videoConstraints}
-        />
-      )}
     </>
   );
 }
